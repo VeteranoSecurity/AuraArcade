@@ -1,4 +1,4 @@
-# 🎮 TabGames — HUB de Jogos de Navegador
+# 🎮 AuraArcade — HUB de Jogos de Navegador
 
 Um catálogo e launcher gamer moderno, responsivo e de alta performance inspirado na interface escura da **Steam**, catálogo da **Netflix** e na sofisticação visual das diretrizes **Apple HIG**, com tema cibernético em **Verde Neon** e plano de fundo interativo em **Metal Líquido (WebGL)**.
 

@@ -22,16 +22,16 @@ export async function generateMetadata({ params }: GamePageProps): Promise<Metad
   const game = GAMES.find((g) => g.id === params.id);
   if (!game) {
     return {
-      title: 'Jogo Não Encontrado — TabGames',
+      title: 'Jogo Não Encontrado — AuraArcade',
     };
   }
 
   return {
-    metadataBase: new URL('https://tabgames.vercel.app'),
-    title: `${game.title} — Sinopse, Plataformas e Jogar Online | TabGames`,
+    metadataBase: new URL('https://auraarcade.vercel.app'),
+    title: `${game.title} — Sinopse, Plataformas e Jogar Online | AuraArcade`,
     description: `${game.synopsis.substring(0, 155)}... Jogue diretamente no navegador sem instalação.`,
     openGraph: {
-      title: `${game.title} — TabGames HUB`,
+      title: `${game.title} — AuraArcade HUB`,
       description: game.description,
       images: [
         {

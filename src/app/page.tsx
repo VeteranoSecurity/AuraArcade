@@ -21,7 +21,9 @@ export default function HomePage() {
   useEffect(() => {
     setMounted(true);
     try {
-      const saved = localStorage.getItem('tabgames_favorites');
+      const saved =
+        localStorage.getItem('auraarcade_favorites') ||
+        localStorage.getItem('tabgames_favorites');
       if (saved) {
         setFavorites(JSON.parse(saved));
       }
@@ -36,7 +38,7 @@ export default function HomePage() {
       const exists = prev.includes(gameId);
       const updated = exists ? prev.filter((id) => id !== gameId) : [...prev, gameId];
       try {
-        localStorage.setItem('tabgames_favorites', JSON.stringify(updated));
+        localStorage.setItem('auraarcade_favorites', JSON.stringify(updated));
       } catch {
         // Fallback
       }

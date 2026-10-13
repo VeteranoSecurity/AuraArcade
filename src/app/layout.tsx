@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tabgames.vercel.app'),
-  title: 'TabGames — Hub Definitivo de Jogos de Navegador',
+  metadataBase: new URL('https://auraarcade.vercel.app'),
+  title: 'AuraArcade — Hub Definitivo de Jogos de Navegador',
   description:
     'Explore e jogue instantaneamente os melhores clássicos, shooters, RPGs e mundos abertos que rodam direto no seu navegador com zero instalação.',
   keywords: [
@@ -24,21 +24,22 @@ export const metadata: Metadata = {
     'gta vice city wasm',
     'quake online',
     'minecraft web',
-    'tabgames',
+    'auraarcade',
+    'aura arcade',
   ],
-  authors: [{ name: 'TabGames Team' }],
+  authors: [{ name: 'AuraArcade Team' }],
   openGraph: {
-    title: 'TabGames — HUB de Jogos de Navegador em Alta Performance',
+    title: 'AuraArcade — HUB de Jogos de Navegador em Alta Performance',
     description:
       'Catálogo completo com mais de 20 clássicos lendários prontos para jogar em 1 clique.',
-    url: 'https://tabgames.vercel.app',
-    siteName: 'TabGames',
+    url: 'https://auraarcade.vercel.app',
+    siteName: 'AuraArcade',
     locale: 'pt_BR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TabGames — HUB de Jogos de Navegador',
+    title: 'AuraArcade — HUB de Jogos de Navegador',
     description: 'Jogos lendários direto no navegador sem instalação.',
   },
   icons: {

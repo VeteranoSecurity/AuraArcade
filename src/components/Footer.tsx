@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
                 </div>
               </div>
               <span className="text-xl font-black text-white tracking-tight">
-                Tab<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-lime-400">Games</span>
+                Aura<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-lime-400">Arcade</span>
               </span>
             </div>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
@@ -102,7 +102,7 @@ export const Footer: React.FC = () => {
               Sobre a Plataforma
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Todos os jogos apresentados são projetos abertos, ports comunitários ou demonstrações de WebAssembly hospedados publicamente pelos seus respectivos autores. TabGames atua como um catálogo de curadoria.
+              Todos os jogos apresentados são projetos abertos, ports comunitários ou demonstrações de WebAssembly hospedados publicamente pelos seus respectivos autores. AuraArcade atua como um catálogo de curadoria.
             </p>
           </div>
         </div>
@@ -124,7 +124,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex items-center gap-1">
-            <span>© {new Date().getFullYear()} TabGames HUB. Criado com</span>
+            <span>© {new Date().getFullYear()} AuraArcade HUB. Criado com</span>
             <Heart className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400 inline" />
             <span>para a comunidade gamer.</span>
           </div>

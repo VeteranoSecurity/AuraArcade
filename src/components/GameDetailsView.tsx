@@ -80,15 +80,19 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
   useEffect(() => {
     try {
       // Favorites check
-      const savedFavs = localStorage.getItem('tabgames_favorites');
+      const savedFavs =
+        localStorage.getItem('auraarcade_favorites') ||
+        localStorage.getItem('tabgames_favorites');
       if (savedFavs) {
         const favList: string[] = JSON.parse(savedFavs);
         setIsFavorite(favList.includes(game.id));
       }
 
       // Comments
-      const storageKey = `tabgames_comments_${game.id}`;
-      const savedComments = localStorage.getItem(storageKey);
+      const storageKey = `auraarcade_comments_${game.id}`;
+      const savedComments =
+        localStorage.getItem(storageKey) ||
+        localStorage.getItem(`tabgames_comments_${game.id}`);
       if (savedComments) {
         setComments(JSON.parse(savedComments));
       } else {
@@ -109,7 +113,9 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
 
   const toggleFavorite = () => {
     try {
-      const savedFavs = localStorage.getItem('tabgames_favorites');
+      const savedFavs =
+        localStorage.getItem('auraarcade_favorites') ||
+        localStorage.getItem('tabgames_favorites');
       let favList: string[] = savedFavs ? JSON.parse(savedFavs) : [];
       if (favList.includes(game.id)) {
         favList = favList.filter((id) => id !== game.id);
@@ -118,7 +124,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
         favList.push(game.id);
         setIsFavorite(true);
       }
-      localStorage.setItem('tabgames_favorites', JSON.stringify(favList));
+      localStorage.setItem('auraarcade_favorites', JSON.stringify(favList));
     } catch {
       // Fallback
     }
@@ -146,7 +152,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
     setCommentText('');
 
     try {
-      localStorage.setItem(`tabgames_comments_${game.id}`, JSON.stringify(updated));
+      localStorage.setItem(`auraarcade_comments_${game.id}`, JSON.stringify(updated));
     } catch {
       // Fallback
     }
