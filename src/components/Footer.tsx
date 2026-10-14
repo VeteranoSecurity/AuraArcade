@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Gamepad2, Heart, Shield, Cpu, Code2 } from 'lucide-react';
+import Image from 'next/image';
+import { Heart, Shield, Cpu, Code2 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const fullText = 'Desenvolvido por TrilhaRede';
@@ -44,10 +45,14 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-lime-500 p-[1px] flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                <div className="w-full h-full bg-[#0a0f0c] rounded-[11px] flex items-center justify-center">
-                  <Gamepad2 className="w-5 h-5 text-emerald-400" />
-                </div>
+              <div className="w-10 h-10 rounded-xl overflow-hidden relative shadow-lg shadow-emerald-500/25 border border-emerald-500/30">
+                <Image
+                  src="/logo.png"
+                  alt="AuraArcade Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-xl font-black text-white tracking-tight">
                 Aura<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-lime-400">Arcade</span>

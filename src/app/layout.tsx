@@ -36,14 +36,28 @@ export const metadata: Metadata = {
     siteName: 'AuraArcade',
     locale: 'pt_BR',
     type: 'website',
+    images: [
+      {
+        url: '/logo-full.png',
+        width: 1024,
+        height: 1024,
+        alt: 'AuraArcade Logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AuraArcade — HUB de Jogos de Navegador',
     description: 'Jogos lendários direto no navegador sem instalação.',
+    images: ['/logo-full.png'],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
 };
 

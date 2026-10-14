@@ -28,4 +28,9 @@ export interface Game {
   featured?: boolean;
   badge?: string;
   releaseYear?: number;
+  embedMode?: 'injected' | 'direct' | 'external';
+  embedConfig?: {
+    gameFileUrl: string;
+    baseHref: string;
+  };
 }

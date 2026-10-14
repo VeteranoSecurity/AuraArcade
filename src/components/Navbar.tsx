@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Gamepad2, Shuffle, BookmarkCheck } from 'lucide-react';
+import Image from 'next/image';
+import { Shuffle, BookmarkCheck } from 'lucide-react';
 
 interface NavbarProps {
   totalGames: number;
@@ -27,11 +28,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           href="/"
           className="flex items-center gap-3.5 group cursor-pointer focus:outline-none"
         >
-          <div className="relative w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-600 via-green-500 to-lime-400 p-[1px] shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-all duration-300 group-hover:scale-105">
-            <div className="w-full h-full bg-[#0a0f0c] rounded-[11px] flex items-center justify-center">
-              <Gamepad2 className="w-6 h-6 text-emerald-400 group-hover:text-lime-300 transition-colors" />
+          <div className="relative w-12 h-12 rounded-xl overflow-hidden p-[1px] shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/60 transition-all duration-300 group-hover:scale-105">
+            <div className="relative w-full h-full rounded-xl overflow-hidden bg-black flex items-center justify-center border border-emerald-500/30 group-hover:border-lime-400/60 transition-colors">
+              <Image
+                src="/logo.png"
+                alt="AuraArcade Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                priority
+              />
             </div>
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-lime-500 rounded-xl blur opacity-30 group-hover:opacity-75 transition duration-500 -z-10" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-green-400 to-lime-400 rounded-xl blur-sm opacity-40 group-hover:opacity-80 transition duration-500 -z-10" />
           </div>
 
           <div className="flex flex-col">

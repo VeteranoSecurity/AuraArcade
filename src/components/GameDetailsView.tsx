@@ -28,6 +28,116 @@ interface GameDetailsViewProps {
 }
 
 const DEFAULT_COMMENTS: Record<string, GameComment[]> = {
+  'hollow-knight': [
+    {
+      id: 'c-hk1',
+      nick: 'HallownestKnight',
+      text: 'Simplesmente incrível rodando no navegador liso desse jeito! Trilha sonora e jogabilidade intactas.',
+      createdAt: 'Hoje às 15:40',
+    },
+    {
+      id: 'c-hk2',
+      nick: 'Hornet_Shaw',
+      text: 'Derrotei o Falso Cavaleiro de primeira! Muito bom poder jogar sem barras de anúncios ou modais chatos.',
+      createdAt: 'Hoje às 18:22',
+    },
+  ],
+  'cuphead': [
+    {
+      id: 'c-cup1',
+      nick: 'Mugman_Bro',
+      text: 'A animação estilo anos 30 é uma obra-prima. Rodando em WebAssembly sem input lag nenhum!',
+      createdAt: 'Hoje às 16:10',
+    },
+    {
+      id: 'c-cup2',
+      nick: 'RetroGamer90',
+      text: 'Jogo difícil pra caramba, mas a trilha sonora de Jazz compensa cada morte kkk.',
+      createdAt: 'Hoje às 17:45',
+    },
+  ],
+  'buckshot-roulette': [
+    {
+      id: 'c-bs1',
+      nick: 'ShotgunGambler',
+      text: 'A tensão nesse jogo é surreal! Usar a serra e a cerveja na hora certa salva a run.',
+      createdAt: 'Hoje às 14:30',
+    },
+    {
+      id: 'c-bs2',
+      nick: 'DealerCrusher',
+      text: 'Dobrei as apostas no round 3 e zerei! Experiência de terror psicológico de primeira.',
+      createdAt: 'Hoje às 19:02',
+    },
+  ],
+  'hollow-knight-silksong': [
+    {
+      id: 'c-silk1',
+      nick: 'NeedleMaster',
+      text: 'A jogabilidade com a Hornet é incrivelmente mais rápida e acrobática. Que jogo maravilhoso!',
+      createdAt: 'Hoje às 13:15',
+    },
+  ],
+  'untitled-goose-game': [
+    {
+      id: 'c-goose1',
+      nick: 'HonkMaster',
+      text: 'Grasnar na cara do jardineiro e roubar as chaves dele nunca perde a graça kkkk!',
+      createdAt: 'Hoje às 12:50',
+    },
+  ],
+  'binding-of-isaac': [
+    {
+      id: 'c-isaac1',
+      nick: 'BrimstoneLover',
+      text: 'O clássico absoluto de Edmund McMillen! A emulação Ruffle carregou instantaneamente.',
+      createdAt: 'Hoje às 11:20',
+    },
+  ],
+  'stardew-valley': [
+    {
+      id: 'c-sdv1',
+      nick: 'FarmerAbigail',
+      text: 'Tão relaxante poder cuidar da fazenda direto no navegador sem precisar instalar nada!',
+      createdAt: 'Hoje às 16:30',
+    },
+    {
+      id: 'c-sdv2',
+      nick: 'JunimoFriend',
+      text: 'Trilha sonora impecável e salvamento funcionando redondinho no cache local.',
+      createdAt: 'Hoje às 18:05',
+    },
+  ],
+  'meatboy': [
+    {
+      id: 'c-mb1',
+      nick: 'RetroJumper',
+      text: 'O Meatboy original em Flash! O salto na parede é super preciso e nostálgico demais.',
+      createdAt: 'Hoje às 15:10',
+    },
+  ],
+  'peak': [
+    {
+      id: 'c-peak1',
+      nick: 'ClimberPro',
+      text: 'A física desse jogo de escalada é viciante! O suor frio a cada salto na montanha.',
+      createdAt: 'Hoje às 17:22',
+    },
+  ],
+  'papers-please': [
+    {
+      id: 'c-pp1',
+      nick: 'InspectorArstotzka',
+      text: 'Glória a Arstotzka! Carimbo verde aprovado, carimbo vermelho negado. Jogaço atemporal!',
+      createdAt: 'Hoje às 14:15',
+    },
+    {
+      id: 'c-pp2',
+      nick: 'GrestinGuard',
+      text: 'Cuidado com os passaportes falsificados da Kolechia kkk. Trilha sonora sinistra e marcante.',
+      createdAt: 'Hoje às 19:40',
+    },
+  ],
   'bo1-zombies': [
     {
       id: 'c-1',
@@ -252,16 +362,26 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
               </p>
             </div>
 
-            <a
-              href={game.gameUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-xl shadow-emerald-500/35 hover:shadow-emerald-500/55 transition-all duration-300 active:scale-95 shrink-0 group/play"
-            >
-              <Play className="w-5 h-5 fill-black" />
-              <span>Jogar Agora</span>
-              <ExternalLink className="w-4 h-4 opacity-80 group-hover/play:translate-x-0.5 transition-transform" />
-            </a>
+            {game.embedMode === 'injected' || game.embedMode === 'direct' ? (
+              <Link
+                href={`/play/${game.id}`}
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-xl shadow-emerald-500/35 hover:shadow-emerald-500/55 transition-all duration-300 active:scale-95 shrink-0 group/play"
+              >
+                <Play className="w-5 h-5 fill-black" />
+                <span>Jogar Agora</span>
+              </Link>
+            ) : (
+              <a
+                href={game.gameUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-xl shadow-emerald-500/35 hover:shadow-emerald-500/55 transition-all duration-300 active:scale-95 shrink-0 group/play"
+              >
+                <Play className="w-5 h-5 fill-black" />
+                <span>Jogar Agora</span>
+                <ExternalLink className="w-4 h-4 opacity-80 group-hover/play:translate-x-0.5 transition-transform" />
+              </a>
+            )}
           </div>
         </div>
 
@@ -307,7 +427,11 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
                 Execução
               </span>
               <span className="text-base font-bold text-white">
-                Web / Emulador
+                {game.embedMode === 'injected'
+                  ? 'WASM / Nativo'
+                  : game.embedMode === 'direct'
+                  ? 'Iframe Web'
+                  : 'Web / Emulador'}
               </span>
             </div>
           </div>

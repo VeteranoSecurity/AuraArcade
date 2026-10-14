@@ -12,6 +12,206 @@ export const CATEGORIES: GameCategory[] = [
 
 export const GAMES: Game[] = [
   {
+    id: 'hollow-knight',
+    title: 'Hollow Knight',
+    category: 'Ação / Metroidvania',
+    primaryCategory: 'Ação & Mundo Aberto',
+    gameUrl: 'https://gn-math.dev/?id=468',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/468-fix2.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSexlMIAVZQjkZPlsfO1c_FlAsDEYtYxAxBRV7S2BBX3sABw9jQGIOEn1JYRlbf1xUXWEQNg5Hf0NnSA94UR0/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/468.png',
+    tags: ['Metroidvania', 'Souls-like', 'Unity', 'WASM', 'Ação'],
+    description: 'Explore o vasto reino arruinado de Hallownest, enfrente criaturas corrompidas e desvende mistérios ancestrais.',
+    synopsis: 'Forje seu próprio caminho em Hollow Knight! Uma aventura épica de ação e exploração em um vasto reino arruinado de insetos e heróis. Explore cavernas sinuosas, lute contra criaturas corrompidas e faça amizade com insetos bizarros, tudo em um estilo clássico 2D desenhado à mão.',
+    platforms: ['PC', 'Nintendo Switch', 'PlayStation 4', 'Xbox One', 'Navegador Web'],
+    featured: true,
+    badge: 'DESTAQUE',
+    releaseYear: 2017
+  },
+  {
+    id: 'cuphead',
+    title: 'Cuphead',
+    category: 'Ação / Run and Gun',
+    primaryCategory: 'Ação & Mundo Aberto',
+    gameUrl: 'https://gn-math.dev/?id=465',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/465-fix2.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSew9cKUlCAiMCIRgTOQo8HVgvJFFUNxBjVUYuS2IeAC9QAl8zQWpWRH4cN0oLe1RXXDJGZQETfBs2Tlxk/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/465.png',
+    tags: ['Run and Gun', 'Boss Rush', 'Animação 1930s', 'Difícil', 'Ação', 'WASM'],
+    description: 'Enfrente chefes monumentais em um clássico jogo de tiro e ação com animações desenhadas à mão no estilo dos anos 1930.',
+    synopsis: 'Cuphead é um clássico jogo de ação focado em batalhas colossais contra chefes. Inspirado nas animações da década de 1930, os visuais e áudios foram minuciosamente recriados com as mesmas técnicas da época: animação tradicional desenhada à mão em celulose, fundos em aquarela e gravações originais de jazz. Jogue como Cuphead ou Mugman e pague sua dívida com o Diabo!',
+    platforms: ['PC', 'Xbox One', 'Nintendo Switch', 'PlayStation 4', 'Navegador Web'],
+    featured: true,
+    badge: 'POPULAR',
+    releaseYear: 2017
+  },
+  {
+    id: 'buckshot-roulette',
+    title: 'Buckshot Roulette',
+    category: 'Suspense / Roleta Russa',
+    primaryCategory: 'Ação & Mundo Aberto',
+    gameUrl: 'https://gn-math.dev/?id=205',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/205-fix2.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex9QJBZVBCMfMVxCYR09HhYsBV8IfAE3VQAjCCALFCQKUxo0FCFeBCk6ORlQJUtQGDIdIV8fOFcmF0wnAUYZNFk/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/205.png',
+    tags: ['Terror', 'Estratégia', 'Psicológico', 'Espingarda', 'Godot', 'WASM'],
+    description: 'Jogue roleta russa com uma espingarda calibre 12 em uma mesa clandestina e tente sobreviver contra o Dealer.',
+    synopsis: 'Em uma boate underground imersa em fumaça e decadência, sente-se em frente ao misterioso Dealer para três rodadas intensas de roleta russa mortal com uma espingarda calibre 12 pump-action. Use itens estratégicos como cigarros, serras e cervejas para virar as probabilidades a seu favor e sair com a maleta cheia de dinheiro.',
+    platforms: ['PC', 'Navegador Web'],
+    featured: true,
+    badge: 'TENSÃO',
+    releaseYear: 2023
+  },
+  {
+    id: 'hollow-knight-silksong',
+    title: 'Hollow Knight: Silksong',
+    category: 'Ação / Metroidvania',
+    primaryCategory: 'Ação & Mundo Aberto',
+    gameUrl: 'https://gn-math.dev/?id=771',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/771-fix2.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSew9cKUlCAiMCIRgYIxY4F05mD1wENh4mGgMlFj8LViUDcgAwBSZSAmM/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/771.png',
+    tags: ['Metroidvania', 'Hornet', 'Team Cherry', 'Agilidade', 'Ação', 'WASM'],
+    description: 'Assuma o controle de Hornet, princesa protetora de Hallownest, e ascenda ao topo de um novo reino governado pela seda e música.',
+    synopsis: 'A tão aguardada sequência épica de Hollow Knight! Como a letal caçadora Hornet, explore uma terra totalmente nova dominada por seda e canções. Capturada e levada para este reino desconhecido, enfrente mais de 150 novos inimigos ferozes, realize acrobacias letais e descubra segredos ancestrais vinculados à sua própria natureza.',
+    platforms: ['PC', 'Nintendo Switch', 'Xbox Series X/S', 'PlayStation 5', 'Navegador Web'],
+    featured: true,
+    badge: 'DESTAQUE',
+    releaseYear: 2024
+  },
+  {
+    id: 'untitled-goose-game',
+    title: 'Untitled Goose Game',
+    category: 'Comédia / Stealth Sandbox',
+    primaryCategory: 'Sandbox',
+    gameUrl: 'https://gn-math.dev/?id=718',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/718-fix.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSew9cKUlCAiMCIRgFIg49DFUuAB8KPhkhUl0rGzkdeSYFWwN-/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/718.png',
+    tags: ['Ganso', 'Comédia', 'Stealth', 'Caos', 'Sandbox', 'WASM'],
+    description: 'Seja um ganso malandro e estrague o dia de todos em um charmoso vilarejo rural britânico.',
+    synopsis: 'Untitled Goose Game é um divertido jogo de furtividade estilo sandbox onde você controla um ganso terrível solto em um vilarejo pacífico. Caminhe pela cidade, desde os jardins dos fundos até as lojas das ruas principais, pregando pegadinhas, roubando chapéus, grasnando sem parar e arruinando o dia de todos os habitantes.',
+    platforms: ['PC', 'Nintendo Switch', 'PlayStation 4', 'Xbox One', 'Navegador Web'],
+    featured: true,
+    badge: 'DIVERSÃO',
+    releaseYear: 2019
+  },
+  {
+    id: 'binding-of-isaac',
+    title: 'Binding of Issac: Wrath of the Lamb',
+    category: 'Roguelike / Dungeon Crawler',
+    primaryCategory: 'RPG & Estratégia',
+    gameUrl: 'https://gn-math.dev/?id=350',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/350-fix.html',
+      baseHref: 'https://gn-math.dev/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/350.png',
+    tags: ['Roguelike', 'Dungeon Crawler', 'Indie', 'Flash', 'Ruffle', 'Edmund McMillen'],
+    description: 'Explore um porão assustador gerado aleatoriamente, colete tesouros bizarros e lute contra abominações bizarras.',
+    synopsis: 'The Binding of Isaac é um shooter roguelike com visão superior gerado aleatoriamente com fortes elementos de RPG. Acompanhando Isaac em sua fuga desesperada da própria mãe para dentro do porão escuro, encontre tesouros bizarros que alteram sua forma e concedem habilidades sobre-humanas para lutar contra hordas de criaturas monstruosas e desvendar segredos ocultos com a expansão Wrath of the Lamb.',
+    platforms: ['PC', 'Mac', 'Navegador Web'],
+    featured: true,
+    badge: 'CLÁSSICO',
+    releaseYear: 2011
+  },
+  {
+    id: 'stardew-valley',
+    title: 'Stardew Valley',
+    category: 'Simulação / RPG',
+    primaryCategory: 'RPG & Estratégia',
+    gameUrl: 'https://gn-math.dev/?id=789',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/789-fix2.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSexxcLAhdGzQSf1kVOFUnDFg5AFcafAEzRB0MFzULTS4WHQ/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/789.png',
+    tags: ['Fazenda', 'Simulação', 'Relaxante', 'RPG', 'ConcernedApe', 'Pixel Art'],
+    description: 'Herde a velha fazenda do seu avô no Vale do Orvalho, plante colheitas, crie animais e construa uma nova vida próspera.',
+    synopsis: 'Você herdou o antigo lote agrícola do seu avô em Stardew Valley. Equipado com ferramentas de segunda mão e algumas moedas, você parte para começar sua nova vida. Transforme campos cobertos de mato em uma fazenda vibrante, crie animais, cultive plantações, explore cavernas misteriosas repletas de monstros e faça amizade com os habitantes de Pelican Town!',
+    platforms: ['PC', 'Nintendo Switch', 'PlayStation 4', 'Xbox One', 'Navegador Web'],
+    featured: true,
+    badge: 'RELAXANTE',
+    releaseYear: 2016
+  },
+  {
+    id: 'meatboy',
+    title: 'Meatboy',
+    category: 'Plataforma / Desafio',
+    primaryCategory: 'Ação & Mundo Aberto',
+    gameUrl: 'https://gn-math.dev/?id=689',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/689-fix.html',
+      baseHref: 'https://gn-math.dev/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/689.png',
+    tags: ['Plataforma', 'Hardcore', 'Flash', 'Ruffle', 'Edmund McMillen', 'Clássico'],
+    description: 'O clássico protótipo hardcore de plataforma onde um cubo animado de carne vermelha precisa resgatar sua namorada de band-aid.',
+    synopsis: 'Criado originalmente para o Newgrounds por Edmund McMillen e Jonathan McEntee, Meatboy é o lendário jogo de plataforma cult que deu origem a Super Meat Boy. Salte por serras giratórias implacáveis, desvie de poços de lava e supere dezenas de fases desafiadoras em ritmo frenético para salvar a Bandage Girl do maligno Dr. Fetus.',
+    platforms: ['PC', 'Flash', 'Navegador Web'],
+    featured: true,
+    badge: 'HARDCORE',
+    releaseYear: 2008
+  },
+  {
+    id: 'peak',
+    title: 'PEAK',
+    category: 'Aventura / Escalada',
+    primaryCategory: 'Ação & Mundo Aberto',
+    gameUrl: 'https://gn-math.dev/?id=847',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/847.html',
+      baseHref: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSew9YOAlWAiUEO0dfHB81ExQbC0AZERszXh5j/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/847.png',
+    tags: ['Escalada', 'Física', 'Montanhismo', 'Aventura', 'WASM', 'Indie'],
+    description: 'Escale montanhas perigosas, desafie a gravidade e alcance os cumes mais altos nesta jornada vertical emocionante.',
+    synopsis: 'PEAK desafia suas habilidades motoras e planejamento em uma ascensão íngreme rumo aos picos mais perigosos. Encontre pontos de apoio estáveis, gerencie sua resistência física e enfrente quedas vertiginosas para conquistar as montanhas mais majestosas nesta aclamada experiência de montanhismo em física 3D.',
+    platforms: ['PC', 'Navegador Web'],
+    featured: true,
+    badge: 'DESAFIO',
+    releaseYear: 2024
+  },
+  {
+    id: 'papers-please',
+    title: 'Papers, Please',
+    category: 'Simulação / Distopia',
+    primaryCategory: 'RPG & Estratégia',
+    gameUrl: 'https://gn-math.dev/?id=187',
+    embedMode: 'injected',
+    embedConfig: {
+      gameFileUrl: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U8DFQnJF8MOBh9/187-fix.html',
+      baseHref: 'https://gn-math.dev/'
+    },
+    coverImage: 'https://gn-math.dev/s/EE0_FEFXflkxUx5iECccXCcNRB9_GDdDXysSex5LLgFQGDgFPFIDP1U3F08uFkEtPBc7WV8/187.png',
+    tags: ['Distopia', 'Fronteira', 'Investigação', 'Glória a Arstotzka', 'Indie', 'Lucas Pope'],
+    description: 'Glória a Arstotzka! Assuma o controle da cabine de imigração fronteiriça e decida quem entra e quem é barrado.',
+    synopsis: 'Parabéns. O sorteio da loteria de trabalho de outubro foi concluído. Seu nome foi sorteado. Para colocação imediata, apresente-se ao Ministério de Admissão no posto de controle de fronteira de Grestin. Um suspense documental distópico premiado onde você inspeciona documentos de imigrantes, detecta contrabandistas e espiões, e equilibra a sobrevivência da sua família com os deveres do estado.',
+    platforms: ['PC', 'PlayStation Vita', 'iOS', 'Navegador Web'],
+    featured: true,
+    badge: 'GLÓRIA A ARSTOTZKA',
+    releaseYear: 2013
+  },
+  {
     id: 'bo1-zombies',
     title: 'BO1 Zombies',
     category: 'FPS / Co-op',

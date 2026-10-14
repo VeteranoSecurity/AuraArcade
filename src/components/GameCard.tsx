@@ -192,18 +192,30 @@ export const GameCard: React.FC<GameCardProps> = ({
           </Link>
 
           {/* Button 2: Jogar */}
-          <a
-            href={game.gameUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-10 min-w-0 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-200 active:scale-95 group/play text-center"
-            title={`Jogar ${game.title}`}
-          >
-            <Play className="w-3.5 h-3.5 shrink-0 fill-black" />
-            <span className="truncate whitespace-nowrap">Jogar</span>
-            <ExternalLink className="w-3 h-3 shrink-0 opacity-75 group-hover/play:translate-x-0.5 transition-transform" />
-          </a>
+          {game.embedMode === 'injected' || game.embedMode === 'direct' ? (
+            <Link
+              href={`/play/${game.id}`}
+              className="h-10 min-w-0 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-200 active:scale-95 group/play text-center"
+              title={`Jogar ${game.title} em tela cheia`}
+            >
+              <Play className="w-3.5 h-3.5 shrink-0 fill-black" />
+              <span className="truncate whitespace-nowrap">Jogar</span>
+            </Link>
+          ) : (
+            <a
+              href={game.gameUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-10 min-w-0 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-200 active:scale-95 group/play text-center"
+              title={`Jogar ${game.title}`}
+            >
+              <Play className="w-3.5 h-3.5 shrink-0 fill-black" />
+              <span className="truncate whitespace-nowrap">Jogar</span>
+              <ExternalLink className="w-3 h-3 shrink-0 opacity-75 group-hover/play:translate-x-0.5 transition-transform" />
+            </a>
+          )}
         </div>
+
       </div>
     </div>
   );
