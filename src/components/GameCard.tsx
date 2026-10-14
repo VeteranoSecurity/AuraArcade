@@ -14,6 +14,7 @@ import {
   Monitor,
   ExternalLink,
 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface GameCardProps {
   game: Game;
@@ -44,6 +45,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   isFavorite,
   onToggleFavorite,
 }) => {
+  const { t } = useLanguage();
   const [imageError, setImageError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -125,7 +127,7 @@ export const GameCard: React.FC<GameCardProps> = ({
               onToggleFavorite(game.id);
             }}
             className="pointer-events-auto p-2 rounded-xl bg-black/60 hover:bg-black/90 backdrop-blur-md border border-white/10 hover:border-emerald-500/40 text-slate-300 hover:text-white transition-all active:scale-90"
-            title={isFavorite ? 'Remover dos favoritos' : 'Salvar nos favoritos'}
+            title={isFavorite ? t.removeFavorite : t.saveFavorite}
           >
             <Bookmark
               className={`w-4 h-4 transition-colors ${
@@ -185,10 +187,10 @@ export const GameCard: React.FC<GameCardProps> = ({
           <Link
             href={`/game/${game.id}`}
             className="h-10 min-w-0 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 hover:text-white border border-emerald-500/25 hover:border-emerald-400/50 shadow-sm transition-all duration-200 active:scale-95 text-center group/info"
-            title="Ver Sinopse e Detalhes"
+            title={t.viewSynopsis}
           >
             <Info className="w-3.5 h-3.5 shrink-0 text-emerald-400 group-hover/info:text-emerald-300 transition-colors" />
-            <span className="truncate whitespace-nowrap">Ver Sinopse</span>
+            <span className="truncate whitespace-nowrap">{t.viewSynopsis}</span>
           </Link>
 
           {/* Button 2: Jogar */}
@@ -196,10 +198,10 @@ export const GameCard: React.FC<GameCardProps> = ({
             <Link
               href={`/play/${game.id}`}
               className="h-10 min-w-0 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-200 active:scale-95 group/play text-center"
-              title={`Jogar ${game.title} em tela cheia`}
+              title={`${t.playNow} ${game.title}`}
             >
               <Play className="w-3.5 h-3.5 shrink-0 fill-black" />
-              <span className="truncate whitespace-nowrap">Jogar</span>
+              <span className="truncate whitespace-nowrap">{t.playNow}</span>
             </Link>
           ) : (
             <a
@@ -207,10 +209,10 @@ export const GameCard: React.FC<GameCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="h-10 min-w-0 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-200 active:scale-95 group/play text-center"
-              title={`Jogar ${game.title}`}
+              title={`${t.playNow} ${game.title}`}
             >
               <Play className="w-3.5 h-3.5 shrink-0 fill-black" />
-              <span className="truncate whitespace-nowrap">Jogar</span>
+              <span className="truncate whitespace-nowrap">{t.playNow}</span>
               <ExternalLink className="w-3 h-3 shrink-0 opacity-75 group-hover/play:translate-x-0.5 transition-transform" />
             </a>
           )}

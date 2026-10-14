@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import LiquidMetalShader from '@/components/ui/liquid-metal-shader';
+import { LanguageProvider } from '@/context/LanguageContext';
 import './globals.css';
 
 const inter = Inter({
@@ -91,7 +92,7 @@ export default function RootLayout({
 
         {/* Page Content Layer directly above background */}
         <div className="relative z-10 flex-1 flex flex-col">
-          {children}
+          <LanguageProvider>{children}</LanguageProvider>
         </div>
       </body>
     </html>

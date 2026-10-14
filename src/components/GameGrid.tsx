@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Game } from '@/types/game';
 import { GameCard } from './GameCard';
 import { Ghost, ArrowDownAZ, FilterX } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface GameGridProps {
   games: Game[];
@@ -22,6 +23,7 @@ export const GameGrid: React.FC<GameGridProps> = ({
   onResetFilters,
   isFiltered,
 }) => {
+  const { lang, t } = useLanguage();
   const [sortOption, setSortOption] = useState<SortOption>('default');
 
   // Sorted list based on chosen option
@@ -46,11 +48,17 @@ export const GameGrid: React.FC<GameGridProps> = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/[0.06]">
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-slate-300">
-            {games.length === 1 ? '1 jogo encontrado' : `${games.length} jogos disponíveis`}
+            {lang === 'pt'
+              ? games.length === 1
+                ? '1 jogo encontrado'
+                : `${games.length} jogos disponíveis`
+              : games.length === 1
+              ? '1 game found'
+              : `${games.length} games available`}
           </span>
           {isFiltered && (
             <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20 font-medium">
-              Filtro ativo
+              {lang === 'pt' ? 'Filtro ativo' : 'Active filter'}
             </span>
           )}
         </div>
@@ -59,17 +67,25 @@ export const GameGrid: React.FC<GameGridProps> = ({
         <div className="flex items-center gap-2 self-end sm:self-auto">
           <span className="text-xs text-slate-400 flex items-center gap-1">
             <ArrowDownAZ className="w-3.5 h-3.5" />
-            Ordenar:
+            {lang === 'pt' ? 'Ordenar:' : 'Sort:'}
           </span>
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value as SortOption)}
             className="text-xs bg-[#0e1410] text-slate-200 border border-white/10 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-emerald-500 cursor-pointer"
           >
-            <option value="default">Destaques e Populares</option>
-            <option value="name-asc">Nome (A - Z)</option>
-            <option value="name-desc">Nome (Z - A)</option>
-            <option value="year-desc">Ano de Lançamento</option>
+            <option value="default">
+              {lang === 'pt' ? 'Destaques e Populares' : 'Featured & Popular'}
+            </option>
+            <option value="name-asc">
+              {lang === 'pt' ? 'Nome (A - Z)' : 'Name (A - Z)'}
+            </option>
+            <option value="name-desc">
+              {lang === 'pt' ? 'Nome (Z - A)' : 'Name (Z - A)'}
+            </option>
+            <option value="year-desc">
+              {lang === 'pt' ? 'Ano de Lançamento' : 'Release Year'}
+            </option>
           </select>
         </div>
       </div>
@@ -93,17 +109,17 @@ export const GameGrid: React.FC<GameGridProps> = ({
             <Ghost className="w-8 h-8 animate-bounce" />
           </div>
           <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-            Nenhum jogo encontrado
+            {t.noGamesFound}
           </h3>
           <p className="text-sm text-slate-400 max-w-md mb-6 leading-relaxed">
-            Não encontramos nenhum resultado para os termos ou filtros aplicados. Tente buscar por outro nome ou explore todas as categorias.
+            {t.noGamesFoundDesc}
           </p>
           <button
             onClick={onResetFilters}
             className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/10 hover:border-emerald-400/40 transition-all active:scale-95"
           >
             <FilterX className="w-4 h-4 text-emerald-400" />
-            <span>Limpar filtros de busca</span>
+            <span>{t.clearFilters}</span>
           </button>
         </div>
       )}

@@ -3,11 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Heart, Shield, Cpu, Code2 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const Footer: React.FC = () => {
-  const fullText = 'Desenvolvido por TrilhaRede';
+  const { lang, t } = useLanguage();
+  const fullText = t.footerDevBanner;
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Reset typewriter when language changes
+  useEffect(() => {
+    setText('');
+    setIsDeleting(false);
+  }, [lang]);
 
   // Typewriter animation in infinite loop
   useEffect(() => {
@@ -36,7 +44,7 @@ export const Footer: React.FC = () => {
     }
 
     return () => clearTimeout(timer);
-  }, [text, isDeleting]);
+  }, [text, isDeleting, fullText]);
 
   return (
     <footer className="w-full border-t border-emerald-500/10 bg-[#060807] mt-24 text-slate-400">
@@ -59,15 +67,15 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              O ecossistema definitivo para reviver e jogar obras-primas dos videogames diretamente na web, potencializado pela tecnologia WebAssembly e emuladores modernos.
+              {t.footerAboutText}
             </p>
             <div className="flex items-center gap-3 text-xs text-slate-500">
               <span className="flex items-center gap-1 text-slate-400">
-                <Cpu className="w-3.5 h-3.5 text-emerald-400" /> WebAssembly & Cloud
+                <Cpu className="w-3.5 h-3.5 text-emerald-400" /> {t.footerAboutBadge1}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1 text-slate-400">
-                <Shield className="w-3.5 h-3.5 text-lime-400" /> Zero Instalação
+                <Shield className="w-3.5 h-3.5 text-lime-400" /> {t.footerAboutBadge2}
               </span>
             </div>
           </div>
@@ -75,27 +83,27 @@ export const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Categorias Populares
+              {t.footerCategoriesTitle}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#fps" className="hover:text-emerald-400 transition-colors">
-                  Tiro & FPS Clássico
+                  {lang === 'pt' ? 'Tiro & FPS Clássico' : 'Classic Shooters & FPS'}
                 </a>
               </li>
               <li>
                 <a href="#open-world" className="hover:text-emerald-400 transition-colors">
-                  Mundo Aberto & Ação
+                  {lang === 'pt' ? 'Mundo Aberto & Ação' : 'Open World & Action'}
                 </a>
               </li>
               <li>
                 <a href="#retro" className="hover:text-emerald-400 transition-colors">
-                  Retro & Nostalgia
+                  {lang === 'pt' ? 'Retro & Nostalgia' : 'Retro & Nostalgia'}
                 </a>
               </li>
               <li>
                 <a href="#sports" className="hover:text-emerald-400 transition-colors">
-                  Esportes & Simulação
+                  {lang === 'pt' ? 'Esportes & Simulação' : 'Sports & Simulation'}
                 </a>
               </li>
             </ul>
@@ -104,10 +112,10 @@ export const Footer: React.FC = () => {
           {/* Legal / Note */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Sobre a Plataforma
+              {t.footerPlatformTitle}
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Todos os jogos apresentados são projetos abertos, ports comunitários ou demonstrações de WebAssembly hospedados publicamente pelos seus respectivos autores. AuraArcade atua como um catálogo de curadoria.
+              {t.footerPlatformText}
             </p>
           </div>
         </div>
@@ -129,13 +137,13 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex items-center gap-1">
-            <span>© {new Date().getFullYear()} AuraArcade HUB. Criado com</span>
-            <Heart className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400 inline" />
-            <span>para a comunidade gamer.</span>
+            <span>© {new Date().getFullYear()} {t.footerRights}</span>
+            <Heart className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400 inline mx-0.5" />
+            <span>{t.footerBuiltWith}</span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-slate-500">Desenvolvido com Next.js & Tailwind</span>
+            <span className="text-slate-500">Next.js & Tailwind</span>
             <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium">
               Vercel Ready
             </span>

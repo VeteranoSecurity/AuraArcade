@@ -9,8 +9,10 @@ import { CategoryFilters } from '@/components/CategoryFilters';
 import { GameGrid } from '@/components/GameGrid';
 import { Footer } from '@/components/Footer';
 import { Sparkles } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function HomePage() {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<GameCategory>('Todos');
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
@@ -127,16 +129,16 @@ export default function HomePage() {
         <section className="mb-8 space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2">
-              <span>Biblioteca de Jogos</span>
+              <span>{t.libraryTitle}</span>
               <Sparkles className="w-5 h-5 text-emerald-400" />
             </h2>
             <p className="text-sm text-slate-400">
-              Clique em qualquer card para ver a sinopse, plataformas, comentários da comunidade e jogar.
+              {t.librarySubtitle}
             </p>
           </div>
 
           {/* Search Bar */}
-          <SearchBar value={searchQuery} onChange={setSearchQuery} />
+          <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder={t.searchPlaceholder} />
 
           {/* Category Filter Pills */}
           <CategoryFilters

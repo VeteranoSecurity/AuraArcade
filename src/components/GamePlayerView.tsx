@@ -16,16 +16,20 @@ import {
   ChevronUp,
   ChevronDown,
 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface GamePlayerViewProps {
   game: Game;
 }
 
 export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
+  const { lang, t } = useLanguage();
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [statusMessage, setStatusMessage] = useState('Inicializando player de jogo...');
+  const [statusMessage, setStatusMessage] = useState(
+    lang === 'pt' ? 'Inicializando player de jogo...' : 'Initializing game player...'
+  );
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isBarVisible, setIsBarVisible] = useState(true);
   const [reloadKey, setReloadKey] = useState(0);
@@ -213,14 +217,14 @@ export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
               title="Voltar para a biblioteca ou sinopse"
             >
               <ArrowLeft className="w-4 h-4 text-emerald-400" />
-              <span className="hidden xs:inline">Voltar</span>
+              <span className="hidden xs:inline">{t.exitGame}</span>
             </Link>
 
             {/* Reload button */}
             <button
               onClick={handleManualReload}
               className="p-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-300 hover:text-white border border-white/10 hover:border-emerald-500/40 transition-all active:scale-90"
-              title="Recarregar jogo"
+              title={t.reloadGame}
             >
               <RotateCcw className="w-3.5 h-3.5 text-emerald-400" />
             </button>
@@ -243,7 +247,7 @@ export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
             </h1>
 
             <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap hidden md:inline-block">
-              {game.category}
+              {t.categories[game.primaryCategory] || game.category}
             </span>
 
             {game.badge && (
@@ -259,7 +263,7 @@ export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
             <button
               onClick={toggleFullscreen}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white border border-white/10 hover:border-emerald-400/50 text-xs sm:text-sm font-semibold transition-all duration-200 active:scale-95 shadow-sm"
-              title={isFullscreen ? 'Sair da tela cheia' : 'Tela cheia nativa'}
+              title={isFullscreen ? t.exitFullscreen : t.fullscreen}
             >
               {isFullscreen ? (
                 <Minimize className="w-4 h-4 text-emerald-400" />
@@ -267,7 +271,7 @@ export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
                 <Maximize className="w-4 h-4 text-emerald-400" />
               )}
               <span className="hidden sm:inline">
-                {isFullscreen ? 'Sair' : 'Tela Cheia'}
+                {isFullscreen ? t.exitFullscreen : t.fullscreen}
               </span>
             </button>
 
@@ -277,17 +281,17 @@ export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 hover:text-white border border-emerald-500/30 hover:border-emerald-400/60 text-xs sm:text-sm font-semibold transition-all duration-200 active:scale-95 shadow-sm"
-              title="Abrir o jogo diretamente na página externa original"
+              title={t.openExternalTab}
             >
               <ExternalLink className="w-4 h-4 text-emerald-400" />
-              <span className="hidden sm:inline">Abrir Externamente</span>
+              <span className="hidden sm:inline">{t.externalTab}</span>
             </a>
 
             {/* Collapse/Hide Bar Button */}
             <button
               onClick={() => setIsBarVisible(false)}
               className="p-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] text-slate-400 hover:text-white border border-white/10 transition-all"
-              title="Ocultar barra superior para visão 100% limpa"
+              title={t.hideControls}
             >
               <ChevronUp className="w-4 h-4" />
             </button>
@@ -300,7 +304,7 @@ export const GamePlayerView: React.FC<GamePlayerViewProps> = ({ game }) => {
         <button
           onClick={() => setIsBarVisible(true)}
           className="absolute top-2 right-4 z-30 p-2 rounded-xl bg-black/80 hover:bg-black text-emerald-400 border border-emerald-500/30 hover:border-emerald-400 backdrop-blur-md shadow-xl transition-all duration-200 active:scale-95"
-          title="Exibir barra de controle"
+          title={t.showControls}
         >
           <ChevronDown className="w-4 h-4" />
         </button>

@@ -3,6 +3,7 @@
 import React from 'react';
 import { GameCategory } from '@/types/game';
 import { Flame, Crosshair, Compass, Trophy, Sword, Box, Layers } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface CategoryFiltersProps {
   categories: GameCategory[];
@@ -27,6 +28,7 @@ export const CategoryFilters: React.FC<CategoryFiltersProps> = ({
   onSelectCategory,
   categoryCounts,
 }) => {
+  const { t } = useLanguage();
   return (
     <div className="w-full relative my-4">
       {/* Scrollable Pills container with custom padding */}
@@ -55,7 +57,7 @@ export const CategoryFilters: React.FC<CategoryFiltersProps> = ({
               </span>
 
               {/* Title */}
-              <span>{category}</span>
+              <span>{t.categories[category] || category}</span>
 
               {/* Pill Count */}
               <span

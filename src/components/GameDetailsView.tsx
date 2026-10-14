@@ -22,6 +22,7 @@ import {
   Clock,
   Sparkles,
 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface GameDetailsViewProps {
   game: Game;
@@ -179,6 +180,7 @@ const DEFAULT_COMMENTS: Record<string, GameComment[]> = {
 };
 
 export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
+  const { lang, t } = useLanguage();
   const [nick, setNick] = useState('');
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState<GameComment[]>([]);
@@ -288,7 +290,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
           className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-200 hover:text-white border border-white/10 hover:border-emerald-400/50 text-sm font-semibold transition-all duration-200 group active:scale-95 shadow-sm"
         >
           <ArrowLeft className="w-4 h-4 text-emerald-400 group-hover:-translate-x-1 transition-transform" />
-          <span>Voltar para a biblioteca</span>
+          <span>{t.backToLibrary}</span>
         </Link>
 
         {/* Quick Share / Favorite */}
@@ -302,16 +304,20 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
             }`}
           >
             <Bookmark className={`w-4 h-4 ${isFavorite ? 'fill-emerald-400 text-emerald-400' : ''}`} />
-            <span className="hidden sm:inline">{isFavorite ? 'Salvo' : 'Salvar'}</span>
+            <span className="hidden sm:inline">
+              {isFavorite ? (lang === 'pt' ? 'Salvo' : 'Saved') : (lang === 'pt' ? 'Salvar' : 'Save')}
+            </span>
           </button>
 
           <button
             onClick={handleCopyLink}
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/10 hover:border-emerald-500/40 transition-all"
-            title="Copiar link"
+            title={t.shareTitle}
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
-            <span className="hidden sm:inline">{copied ? 'Copiado!' : 'Compartilhar'}</span>
+            <span className="hidden sm:inline">
+              {copied ? (lang === 'pt' ? 'Copiado!' : 'Copied!') : (lang === 'pt' ? 'Compartilhar' : 'Share')}
+            </span>
           </button>
         </div>
       </div>
@@ -347,7 +353,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
               </span>
             )}
             <span className="px-3 py-1 rounded-lg text-xs font-bold bg-white/10 backdrop-blur-md text-emerald-300 border border-emerald-500/30">
-              {game.primaryCategory}
+              {t.categories[game.primaryCategory] || game.primaryCategory}
             </span>
           </div>
 
@@ -368,7 +374,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-xl shadow-emerald-500/35 hover:shadow-emerald-500/55 transition-all duration-300 active:scale-95 shrink-0 group/play"
               >
                 <Play className="w-5 h-5 fill-black" />
-                <span>Jogar Agora</span>
+                <span>{t.playNow}</span>
               </Link>
             ) : (
               <a
@@ -378,7 +384,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-base bg-gradient-to-r from-emerald-500 via-green-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 text-black shadow-xl shadow-emerald-500/35 hover:shadow-emerald-500/55 transition-all duration-300 active:scale-95 shrink-0 group/play"
               >
                 <Play className="w-5 h-5 fill-black" />
-                <span>Jogar Agora</span>
+                <span>{t.playNow}</span>
                 <ExternalLink className="w-4 h-4 opacity-80 group-hover/play:translate-x-0.5 transition-transform" />
               </a>
             )}
@@ -394,10 +400,10 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
             </div>
             <div>
               <span className="text-xs text-slate-400 uppercase tracking-wider block font-semibold">
-                Ano de Lançamento
+                {t.releaseYearLabel}
               </span>
               <span className="text-base font-bold text-white">
-                {game.releaseYear || 'Clássico'}
+                {game.releaseYear || (lang === 'pt' ? 'Clássico' : 'Classic')}
               </span>
             </div>
           </div>
@@ -409,10 +415,10 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
             </div>
             <div>
               <span className="text-xs text-slate-400 uppercase tracking-wider block font-semibold">
-                Gênero
+                {t.categoryLabel}
               </span>
               <span className="text-base font-bold text-white truncate max-w-[150px] block">
-                {game.category}
+                {t.categories[game.primaryCategory] || game.category}
               </span>
             </div>
           </div>
@@ -424,7 +430,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
             </div>
             <div>
               <span className="text-xs text-slate-400 uppercase tracking-wider block font-semibold">
-                Execução
+                {lang === 'pt' ? 'Execução' : 'Runtime'}
               </span>
               <span className="text-base font-bold text-white">
                 {game.embedMode === 'injected'
@@ -445,7 +451,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
           <div className="p-6 sm:p-8 rounded-3xl bg-[#0c120e] border border-white/[0.08] shadow-lg space-y-4">
             <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-emerald-400" />
-              <span>Sinopse do Jogo</span>
+              <span>{t.synopsisTitle}</span>
             </h2>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
               {game.synopsis || game.description}
@@ -457,13 +463,13 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
             <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
               <h2 className="text-xl font-bold text-white flex items-center gap-2.5">
                 <MessageSquare className="w-5 h-5 text-emerald-400" />
-                <span>Comentários da Comunidade</span>
+                <span>{t.communityComments}</span>
                 <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   {comments.length}
                 </span>
               </h2>
               <span className="text-xs text-slate-400 bg-white/5 px-2.5 py-1 rounded-lg border border-white/10">
-                Sem login necessário
+                {lang === 'pt' ? 'Sem login necessário' : 'No login required'}
               </span>
             </div>
 
@@ -474,7 +480,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
             >
               <div>
                 <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block mb-1.5">
-                  Seu Nick ou Apelido:
+                  {lang === 'pt' ? 'Seu Nick ou Apelido:' : 'Your Nickname:'}
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
@@ -484,7 +490,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
                     type="text"
                     required
                     maxLength={30}
-                    placeholder="Ex: GaMeR_99, PlayerOne..."
+                    placeholder={t.yourNickPlaceholder}
                     value={nick}
                     onChange={(e) => setNick(e.target.value)}
                     className="w-full pl-10 pr-3.5 py-2.5 text-sm bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
@@ -494,13 +500,13 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
 
               <div>
                 <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider block mb-1.5">
-                  Comentário ou Memória:
+                  {lang === 'pt' ? 'Comentário ou Memória:' : 'Comment or Memory:'}
                 </label>
                 <textarea
                   required
                   rows={3}
                   maxLength={500}
-                  placeholder="Deixe uma dica, opinião ou memória nostálgica desse jogo..."
+                  placeholder={t.commentPlaceholder}
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
                   className="w-full p-3.5 text-sm bg-black/40 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
@@ -514,7 +520,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
                   className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 to-lime-500 hover:from-emerald-400 hover:to-lime-400 disabled:opacity-40 disabled:cursor-not-allowed text-black shadow-lg shadow-emerald-500/25 transition-all active:scale-95"
                 >
                   <Send className="w-4 h-4 fill-black" />
-                  <span>Publicar Comentário</span>
+                  <span>{t.postCommentBtn}</span>
                 </button>
               </div>
             </form>
@@ -552,7 +558,9 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
                 ))
               ) : (
                 <div className="text-center py-8 text-slate-500 text-sm">
-                  Nenhum comentário publicado ainda. Seja o primeiro a opinar!
+                  {lang === 'pt'
+                    ? 'Nenhum comentário publicado ainda. Seja o primeiro a opinar!'
+                    : 'No comments published yet. Be the first to share your thoughts!'}
                 </div>
               )}
             </div>
@@ -565,7 +573,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
           <div className="p-6 rounded-3xl bg-[#0c120e] border border-white/[0.08] shadow-lg space-y-4">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Monitor className="w-4 h-4 text-emerald-400" />
-              <span>Plataformas Originais</span>
+              <span>{t.platformsLabel}</span>
             </h3>
             <div className="flex flex-wrap gap-2">
               {game.platforms.map((platform) => (
@@ -583,7 +591,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
           {/* Tags widget */}
           <div className="p-6 rounded-3xl bg-[#0c120e] border border-white/[0.08] shadow-lg space-y-3">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-              Tags & Franquia
+              {t.tagsLabel}
             </h3>
             <div className="flex flex-wrap gap-1.5">
               {game.tags.map((tag) => (
@@ -601,7 +609,7 @@ export const GameDetailsView: React.FC<GameDetailsViewProps> = ({ game }) => {
           {relatedGames.length > 0 && (
             <div className="p-6 rounded-3xl bg-[#0c120e] border border-white/[0.08] shadow-lg space-y-4">
               <h3 className="text-sm font-bold text-white uppercase tracking-wider">
-                Jogos Recomendados
+                {lang === 'pt' ? 'Jogos Recomendados' : 'Recommended Games'}
               </h3>
               <div className="space-y-3">
                 {relatedGames.map((rel) => (
