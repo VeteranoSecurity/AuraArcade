@@ -127,12 +127,15 @@ export default function HomePage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
         {/* Search & Discover Header */}
         <section className="mb-8 space-y-6">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2">
-              <span>{t.libraryTitle}</span>
-              <Sparkles className="w-5 h-5 text-emerald-400" />
+          <div className="relative text-center max-w-3xl mx-auto space-y-3 px-6 py-6 sm:py-7 rounded-3xl bg-[#090f0c]/90 border border-emerald-500/25 backdrop-blur-2xl shadow-2xl shadow-black/90">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-0.5">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Aura Gaming HUB</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-white flex items-center justify-center gap-2">
+              <span className="drop-shadow-lg">{t.libraryTitle}</span>
             </h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm sm:text-base text-slate-200 font-medium leading-relaxed max-w-xl mx-auto drop-shadow-sm">
               {t.librarySubtitle}
             </p>
           </div>

@@ -75,19 +75,19 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`dark ${inter.variable}`}>
       <body className="min-h-screen flex flex-col font-sans bg-[#060a08] text-slate-100 selection:bg-emerald-400 selection:text-black relative overflow-x-hidden">
-        {/* Dynamic Liquid Metal WebGL Shader Background at z-0 (guaranteed visible) */}
+        {/* Dynamic Liquid Metal WebGL Shader Background at z-0 (100% visible and interactive) */}
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
           <LiquidMetalShader
             className="w-full h-full"
             baseColor="#072213"
-            metalColor="#22c55e"
-            highlightColor="#86efac"
-            distortion={0.88}
+            metalColor="#16a34a"
+            highlightColor="#4ade80"
+            distortion={0.85}
             speed={0.65}
             scale={1.05}
           />
-          {/* Suave vinheta atmosférica nas bordas para destacar o conteúdo sem esconder as ondas */}
-          <div className="absolute inset-0 bg-radial from-transparent via-[#060a08]/25 to-[#060a08]/65 pointer-events-none" />
+          {/* Vinheta ultra suave apenas nas extremidades para não esconder as ondas interativas */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none" />
         </div>
 
         {/* Page Content Layer directly above background */}

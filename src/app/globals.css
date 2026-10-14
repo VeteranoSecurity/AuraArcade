@@ -50,6 +50,20 @@ body {
   background: rgba(34, 197, 94, 0.45);
 }
 
+/* Hide scrollbars utility for filters and carousels */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
 /* Glassmorphism Styles */
 .glass-panel {
   background: rgba(14, 20, 16, 0.7);
